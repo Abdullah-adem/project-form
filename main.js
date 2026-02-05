@@ -45,10 +45,20 @@ const checkEmail = (Email)=>{
     }
 }
 
+const checkPasswordLength =(input,min,max)=>{
+    if(input.value.length<min){
+        showError(input, `password at last  charcter ${min}`);
+    } else if (input.value.length >max){
+        showError(input,`password maximum charcter is ${max}`);
+    }
+}
+
 form.addEventListener('submit',(event)=>{
 event.preventDefault();
 checkEmpty([username, Email, password,confimpassword]);
 checkEmail(Email);
+checkPasswordLength(password, 6,10);
+checkPasswordLength(confimpassword, 6,10);
 
 });
 
