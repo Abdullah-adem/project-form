@@ -18,7 +18,7 @@ small.innerText = message;
 
 const showSuccess = (input)=>{
 let parentElement= input.parentElement;
-parentElement.classList = 'form-control error';
+parentElement.classList = 'form-control success';
 // const small = parentElement.querySelector("small")
 const successIcon=parentElement.querySelectorAll("i")[0];
 const errorIcon=parentElement.querySelectorAll("i")[1];
@@ -36,11 +36,25 @@ elements.forEach(element => {
 });
 }
 
+const checkEmail = (Email)=>{
+    const reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+    if (reg.test(Email.value)){
+        showSuccess(Email);
+    }else {
+        showError(Email,'invalid email');
+    }
+}
+
 form.addEventListener('submit',(event)=>{
 event.preventDefault();
 checkEmpty([username, Email, password,confimpassword]);
+checkEmail(Email);
 
 });
+
+
+
+
 
 // if (username.value === ''){
 //     username.parentElement.classList = 'form-control error';
