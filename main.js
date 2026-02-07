@@ -52,6 +52,14 @@ const checkPasswordLength =(input,min,max)=>{
         showError(input,`password maximum charcter is ${max}`);
     }
 }
+const checkPasswordsMatch = (password, confimpassword) => {
+    if (password.value !== confimpassword.value) {
+        showError(confimpassword, "Passwords do not match");
+    } else {
+        showSuccess(confimpassword);
+    }
+}
+
 
 form.addEventListener('submit',(event)=>{
 event.preventDefault();
@@ -59,6 +67,7 @@ checkEmpty([username, Email, password,confimpassword]);
 checkEmail(Email);
 checkPasswordLength(password, 6,10);
 checkPasswordLength(confimpassword, 6,10);
+checkPasswordsMatch(password, confimpassword);
 
 });
 
